@@ -27,6 +27,7 @@
     "react-native-randombytes": "^2.2.0",
     "react-native-tcp": "^2.0.4",
     "react-native-udp": "^1.2.9",
+    "react-navigation": "^2.0.1",
     "readable-stream": "^1.0.33",
     "stream-browserify": "^1.0.0",
     "string_decoder": "^0.10.31",
