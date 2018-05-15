@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
-const Web3 = require('web3');
-const web3 = new Web3();
-web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
+import BlockChain from "../services/blockchainService";
+import Auto from "../services/AuthApiService";
+var blockChain= new BlockChain();
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -28,20 +28,17 @@ export default class HomeScreen extends Component {
     balance: null
   };
 
-  getBalance() {
-    web3.eth.getCoinbase((err, coinbase) => {
-      if (err) {this.setState({balance: err});}
-      const balance = web3.eth.getBalance(coinbase, (err2, balance) => {
-        console.log('balance ' + balance);
-        this.setState({balance});
-      });
-    });
-  }
+   getdata () {
+            var data =  blockChain.getAllContracts('sss');
+
+            data.then((res) => this.setState({balance: res.answer})).catch ((res) => this.setState({balance: res.answer}));
+
+        }
 
   render () {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.balanceButton} onPress={this.getBalance.bind(this)}>
+        <TouchableOpacity style={styles.balanceButton} onPress={this.getdata.bind(this)}>
           <Text style={styles.balanceText}>Get Balance</Text>
         </TouchableOpacity>
         {this.state.balance && <Text style={styles.balance}>
