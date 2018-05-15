@@ -22,6 +22,11 @@ export default class Menu extends Component {
     this.state = {
       name: "Client"
     }
+
+  }
+
+  navigate(screen) {
+    this.props.navigation.navigate(screen);
   }
 
   render () {
@@ -54,7 +59,7 @@ export default class Menu extends Component {
           <Text style={styles.header}>Hello, {this.state.name}</Text>
           {
             menu.map((item, key) =>
-                <MenuItem item={item} navigate={this.props.navigation.navigate} key={key}/>
+                <MenuItem item={item} navigate={this.navigate.bind(this)} key={key}/>
             )
           }
         </ScrollView>

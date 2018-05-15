@@ -9,23 +9,46 @@ import {
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
+import Auth from "../services/AuthApiService";
+
 export default class LoginScreen extends Component {
   static navigationOptions = {
-   title: 'Login',
-  };
+    header: null
+  }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      t: "a"
+      email: '',
+      password: ''
     }
+
+    this.auth = new Auth();
+  }
+
+  login() {
+    this.props.navigation.navigate('Container');/*
+    let data = this.auth.login({
+      email: 'orz@google.com',
+      password: '123456'
+    });
+
+    data.then((res) => res.json())
+    .then((res) => {
+      if (res.token) {
+        this.props.navigation.navigate('MainStack');
+      } else {
+        alert("Bad details");
+      }
+    })*/
+
   }
 
   render () {
     return (
       <View style={styles.container}>
-          <Text style={styles.logo}>new New Blockchain</Text>
+          <Text style={styles.logo}>new New(Blockchain());</Text>
           <View style={styles.login}>
                      <TextInput
                        placeholder="Enter email"
@@ -62,14 +85,30 @@ const styles = StyleSheet.create({
   logo: {
     textAlign: 'center',
     color: 'white',
-    fontSize: 35
+    fontSize: 35,
+    marginBottom: 50
   },
   login: {
-    flex: 2,
-    justifyContent: 'center'
+    justifyContent: 'space-around',
+    padding: 10,
+    width: 300
   },
   input: {
-    width: 100,
-    backgroundColor: "#34495E"
+    height: 40,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    color: '#fff',
+    marginBottom: 5,
+    borderRadius: 2,
+    paddingHorizontal: 15,
+    textAlign: 'center'
+  },
+  loginButton: {
+    backgroundColor: 'rgba(255, 213, 0, 0.78)',
+    paddingVertical: 15
+  },
+  loginText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#fff'
   }
 });

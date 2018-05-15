@@ -9,7 +9,7 @@ import {
 import { createStackNavigator } from 'react-navigation';
 
 import BlockChain from "../services/blockchainService";
-import Auto from "../services/AuthApiService";
+
 var blockChain= new BlockChain();
 
 export default class HomeScreen extends Component {
@@ -18,9 +18,7 @@ export default class HomeScreen extends Component {
    headerStyle: {
     backgroundColor: '#f4511e',
    },
-   headerLeft: (<TouchableOpacity onPress={()=> this.props.navigation.toggleDrawer()}>
-               <Text>Open</Text>
-             </TouchableOpacity>),
+   headerLeft: null,
    headerTintColor: '#fff',
    headerTitleStyle: {
       fontWeight: 'bold',
@@ -41,6 +39,7 @@ export default class HomeScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
+        <TouchableOpacity onPress={()=> this.props.navigation.toggleDrawer()}><Text>aaa</Text></TouchableOpacity>
         <TouchableOpacity style={styles.balanceButton} onPress={this.getdata.bind(this)}>
           <Text style={styles.balanceText}>Get Balance</Text>
         </TouchableOpacity>
