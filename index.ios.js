@@ -18,12 +18,12 @@ import Menu from './srcs/components/Menu';
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Login: LoginScreen,
     Open: OpenContracts,
     Closed: ClosedContracts
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
+    headerMode: 'screen',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#062743',
@@ -37,12 +37,12 @@ const RootStack = createStackNavigator(
 );
 
 const MyApp = createDrawerNavigator({
-  Home: {
+  LoginScreen: {
+    screen: LoginScreen,
+  },
+  Container: {
     screen: RootStack,
-  },
-  Notifications: {
-    screen: Menu,
-  },
+  }
 },
 {
   drawerWidth: 300,

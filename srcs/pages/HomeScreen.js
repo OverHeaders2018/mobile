@@ -18,6 +18,9 @@ export default class HomeScreen extends Component {
    headerStyle: {
     backgroundColor: '#f4511e',
    },
+   headerLeft: (<TouchableOpacity onPress={()=> this.props.navigation.toggleDrawer()}>
+               <Text>Open</Text>
+             </TouchableOpacity>),
    headerTintColor: '#fff',
    headerTitleStyle: {
       fontWeight: 'bold',

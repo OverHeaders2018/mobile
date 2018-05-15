@@ -10,7 +10,7 @@ import { createStackNavigator } from 'react-navigation';
 
 export default class ClosedContracts extends Component {
   static navigationOptions = {
-   title: 'Open Contracts',
+   title: 'Closed Contracts',
   };
 
   constructor(props) {
