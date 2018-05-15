@@ -8,44 +8,30 @@ import {
 } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 
-import BlockChain from "../services/blockchainService";
-
-var blockChain= new BlockChain();
-
 export default class HomeScreen extends Component {
-  static navigationOptions = {
-   title: 'Home',
-   headerStyle: {
-    backgroundColor: '#f4511e',
-   },
-   headerLeft: null,
-   headerTintColor: '#fff',
-   headerTitleStyle: {
-      fontWeight: 'bold',
-   },
-  };
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Home',
+      headerLeft: null,
+      headerTintColor: "#fff",
+      headerStyle: {
+       backgroundColor: '#f4511e',
+      },
+      headerTitleStyle: {
+         fontWeight: 'bold',
+      },
+      headerRight: (<TouchableOpacity onPress={()=> navigation.dispatch(DrawerActions.toggleDrawer())}><Text>aa</Text></TouchableOpacity>),
+    }
+  }
 
   state = {
     balance: null
   };
 
-   getdata () {
-            var data =  blockChain.getAllContracts('sss');
-
-            data.then((res) => this.setState({balance: res.answer})).catch ((res) => this.setState({balance: res.answer}));
-
-        }
-
   render () {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=> this.props.navigation.dispatch(DrawerActions.toggleDrawer())}><Text>aaa</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.balanceButton} onPress={this.getdata.bind(this)}>
-          <Text style={styles.balanceText}>Get Balance</Text>
-        </TouchableOpacity>
-        {this.state.balance && <Text style={styles.balance}>
-          {`${this.state.balance}`}
-        </Text>}
+
       </View>
     );
   }

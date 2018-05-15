@@ -5,7 +5,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  TextInput
+  TextInput,
+  AsyncStorage
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
@@ -27,10 +28,34 @@ export default class LoginScreen extends Component {
     this.auth = new Auth();
   }
 
+  async checkIfUserExists() {
+    try {
+      let token = await AsyncStorage.getItem("token");
+
+      if (token) {
+        this.props.navigation.navigate('drawer');
+      }
+    } catch (e) {
+      alert(e);
+    }
+  }
+
+  componentDidMount() {
+    this.checkIfUserExists();
+  }
+
+  async signIn(token) {
+    try {
+      await AsyncStorage.setItem("token", token);
+    } catch (e) {
+      alert(e);
+    }
+  }
+
   login() {
     let data = this.auth.login({
-      email: 'orz@google.com',
-      password: '123456'
+      email: this.state.email,
+      password: this.state.password
     });
     this.setState({
       isLoading: true
@@ -38,9 +63,13 @@ export default class LoginScreen extends Component {
     data.then((res) => res.json())
     .then((res) => {
       if (res.token) {
+        this.signIn(res.token);
         this.props.navigation.navigate('drawer');
       } else {
         alert("Bad details");
+        this.setState({
+          isLoading: false
+        })
       }
     })
   }
@@ -68,6 +97,12 @@ export default class LoginScreen extends Component {
                           this.login()}
                         style={styles.loginButton}>
                          <Text style={styles.loginText}>Login</Text>
+                       </TouchableOpacity>
+                       <TouchableOpacity
+                        onPress= {()=>
+                          this.login()}
+                        style={styles.registerButton}>
+                         <Text style={styles.loginText}>Register</Text>
                        </TouchableOpacity>
          </View>
          {this.state.isLoading && <Text>Loading !</Text>}
@@ -106,6 +141,11 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: 'rgba(255, 213, 0, 0.78)',
     paddingVertical: 15
+  },
+  registerButton: {
+    backgroundColor: '#F39C12',
+    paddingVertical: 15,
+    marginTop: 75
   },
   loginText: {
     textAlign: 'center',
