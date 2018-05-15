@@ -7,7 +7,7 @@ import {
   View,
   ScrollView
 } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { DrawerActions } from 'react-navigation';
 
 import MenuItem from './MenuItem';
 
@@ -27,6 +27,7 @@ export default class Menu extends Component {
 
   navigate(screen) {
     this.props.navigation.navigate(screen);
+    this.props.navigation.dispatch(DrawerActions.toggleDrawer());
   }
 
   render () {

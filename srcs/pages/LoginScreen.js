@@ -28,21 +28,21 @@ export default class LoginScreen extends Component {
   }
 
   login() {
-    this.props.navigation.navigate('Container');/*
     let data = this.auth.login({
       email: 'orz@google.com',
       password: '123456'
     });
-
+    this.setState({
+      isLoading: true
+    })
     data.then((res) => res.json())
     .then((res) => {
       if (res.token) {
-        this.props.navigation.navigate('MainStack');
+        this.props.navigation.navigate('drawer');
       } else {
         alert("Bad details");
       }
-    })*/
-
+    })
   }
 
   render () {
@@ -70,6 +70,7 @@ export default class LoginScreen extends Component {
                          <Text style={styles.loginText}>Login</Text>
                        </TouchableOpacity>
          </View>
+         {this.state.isLoading && <Text>Loading !</Text>}
       </View>
     );
   }

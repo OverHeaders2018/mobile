@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { DrawerActions } from 'react-navigation';
 
 import BlockChain from "../services/blockchainService";
 
@@ -39,7 +39,7 @@ export default class HomeScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=> this.props.navigation.toggleDrawer()}><Text>aaa</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=> this.props.navigation.dispatch(DrawerActions.toggleDrawer())}><Text>aaa</Text></TouchableOpacity>
         <TouchableOpacity style={styles.balanceButton} onPress={this.getdata.bind(this)}>
           <Text style={styles.balanceText}>Get Balance</Text>
         </TouchableOpacity>
