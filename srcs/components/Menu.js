@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Image,
   View,
   ScrollView,
   AsyncStorage
@@ -11,6 +12,8 @@ import {
 import { DrawerActions } from 'react-navigation';
 
 import MenuItem from './MenuItem';
+
+var avatar = require("../imgs/jianyoung.jpg");
 
 export default class Menu extends Component {
   static navigationOptions = {
@@ -21,9 +24,27 @@ export default class Menu extends Component {
     super(props);
 
     this.state = {
-      name: "Client"
+      name: "Client",
+      avatar: ''
     }
+  }
 
+  async getDetails() {
+    try {
+      let name = await AsyncStorage.getItem("name");
+      //let avatar = await AsyncStorage.getItem("avatar");
+
+      this.setState({
+        name: name,
+        avatar: {uri: avatar}
+      })
+    } catch (e) {
+      alert(e);
+    }
+  }
+
+  componentDidMount() {
+    this.getDetails();
   }
 
   async logout() {
@@ -73,7 +94,7 @@ export default class Menu extends Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.wrapper}>
-          <View style={styles.avatarBox}></View>
+          <Image source={avatar} style={styles.avatarBox} />
           <Text style={styles.header}>Hello, {this.state.name}</Text>
           {
             menu.map((item, key) =>
@@ -91,7 +112,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#effff3',
+    opacity: 0.9,
+    backgroundColor: '#7f8c8d',
   },
   wrapper: {
     marginTop: 40,
@@ -105,7 +127,7 @@ const styles = StyleSheet.create({
   avatarBox: {
     width: 180,
     height: 180,
-    borderRadius: 100,
+    borderRadius: 80,
     marginLeft: 50,
     backgroundColor: '#837794'
   }

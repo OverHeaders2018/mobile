@@ -12,7 +12,7 @@ class AuthApiService {
     * */
 
     register(params) {
-        return fetch('http://40.115.124.134/api/register', {
+        return fetch('http://40.115.124.134/register', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -32,7 +32,7 @@ class AuthApiService {
     }
 
     registerDevice(pushToken, userToken) {
-      return fetch('http://40.115.124.134/api/device', {
+      return fetch('http://40.115.124.134/device', {
           method: 'POST',
           headers: {
               Accept: 'application/json',
@@ -46,7 +46,7 @@ class AuthApiService {
     }
 
     login(params) {
-        return fetch('http://40.115.124.134/api/login', {
+        return fetch('http://40.115.124.134/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

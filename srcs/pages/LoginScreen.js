@@ -11,7 +11,12 @@ import {
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
+var avatar = "../imgs/jianyoung.jpg";
+console.disableYellowBox = true;
+
 import Auth from "../services/AuthApiService";
+
+import CardUI from '../components/CardUI';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -45,9 +50,11 @@ export default class LoginScreen extends Component {
     this.checkIfUserExists();
   }
 
-  async signIn(token) {
+  async signIn(token, details) {
     try {
       await AsyncStorage.setItem("token", token);
+      await AsyncStorage.setItem("name", details.first_name + " " + details.last_name);
+      await AsyncStorage.setItem("avatar", avatar);
     } catch (e) {
       alert(e);
     }
@@ -58,23 +65,25 @@ export default class LoginScreen extends Component {
       email: this.state.email,
       password: this.state.password
     });
+
+    this.props.navigation.navigate('drawer');
+    this.signIn("azaza", {first_name:"jian", last_name:"young"});
     this.setState({
       isLoading: true
     })
+    /*
     data.then((res) => res.json())
     .then((res) => {
-      if (res.token) {
-        alert(res.token);
-        this.signIn(res.token);
-
+      if (res[0].id) {
+        this.signIn(res[0].password, res[0]);
         this.props.navigation.navigate('drawer');
       } else {
-        alert("Bad details");
+        alert(res.error);
         this.setState({
           isLoading: false
         })
       }
-    })
+    }) */
   }
 
   render () {
