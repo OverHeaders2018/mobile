@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#b5fffe',
+    backgroundColor: '#cfd6ee',
     borderColor: "#090909",
     borderLeftWidth: 1,
     borderBottomWidth: 1,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 20,
-    color: '#444444',
+    color: '#040202',
     paddingTop: 23,
     paddingLeft: 15
   },
