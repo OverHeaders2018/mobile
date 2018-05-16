@@ -64,7 +64,9 @@ export default class LoginScreen extends Component {
     data.then((res) => res.json())
     .then((res) => {
       if (res.token) {
+        alert(res.token);
         this.signIn(res.token);
+
         this.props.navigation.navigate('drawer');
       } else {
         alert("Bad details");
