@@ -31,6 +31,20 @@ class AuthApiService {
 
     }
 
+    registerDevice(pushToken, userToken) {
+      return fetch('http://40.115.124.134/api/device', {
+          method: 'POST',
+          headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + userToken
+          },
+          body: JSON.stringify({
+              device_token: pushToken
+          }),
+      });
+    }
+
     login(params) {
         return fetch('http://40.115.124.134/api/login', {
             method: 'POST',

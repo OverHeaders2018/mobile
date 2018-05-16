@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import MenuOpen from '../components/MenuOpen';
+import PushNotificationController from '../PushNotification/PushNotificationController';
 
 export default class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -33,7 +34,7 @@ export default class HomeScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-
+        <PushNotificationController/>
       </View>
     );
   }
