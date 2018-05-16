@@ -15,11 +15,12 @@
     "domain-browser": "^1.1.7",
     "events": "^1.1.1",
     "https-browserify": "0.0.1",
+    "node-libs-react-native": "github:abec/node-libs-react-native",
     "path-browserify": "0.0.0",
     "process": "^0.11.10",
     "querystring-es3": "^0.2.1",
-    "react": "16.0.0-alpha.12",
-    "react-native": "0.45.1",
+    "react": "16.3.1",
+    "react-native": "0.55.4",
     "react-native-crypto": "^2.0.2",
     "react-native-http": "github:tradle/react-native-http#834492d",
     "react-native-level-fs": "^3.0.0",
@@ -36,14 +37,13 @@
     "url": "^0.10.3",
     "util": "^0.10.3",
     "vm-browserify": "0.0.4",
-    "web3": "^0.19.1"
+    "web3": "^0.20.5"
   },
   "devDependencies": {
-    "babel-jest": "20.0.3",
-    "babel-preset-react-native": "2.0.0",
-    "jest": "20.0.4",
-    "react-test-renderer": "16.0.0-alpha.12",
-    "rn-nodeify": "github:mvayngrib/rn-nodeify"
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"
