@@ -4,9 +4,11 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+   Image
 } from 'react-native';
 import { DrawerActions } from 'react-navigation';
+import MenuOpen from '../components/MenuOpen';
 
 export default class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -15,12 +17,12 @@ export default class HomeScreen extends Component {
       headerLeft: null,
       headerTintColor: "#fff",
       headerStyle: {
-       backgroundColor: '#f4511e',
+       backgroundColor: '#252cf4',
       },
       headerTitleStyle: {
          fontWeight: 'bold',
       },
-      headerRight: (<TouchableOpacity onPress={()=> navigation.dispatch(DrawerActions.toggleDrawer())}><Text>aa</Text></TouchableOpacity>),
+      headerRight: (<MenuOpen navigation={navigation}/>),
     }
   }
 
@@ -52,6 +54,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5
+  },
+  icon: {
+     width: 60,
+     height: 60,
   },
   balanceText: {
     textAlign: 'center',

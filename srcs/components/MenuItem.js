@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#245a88',
-    borderColor: "#d0d0d0",
+    backgroundColor: '#b5fffe',
+    borderColor: "#090909",
     borderLeftWidth: 1,
     borderBottomWidth: 1,
     borderRightWidth: 1,
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
   iconBox: {
     width: 50,
     borderRightWidth: 1,
-    borderRightColor: "#d0d0d0",
+    borderRightColor: "#040202",
     justifyContent: 'space-around',
     alignItems: 'center'
   },
   icon: {
-    width: 60,
+    width: 40,
     height: 50,
   },
   itemText: {

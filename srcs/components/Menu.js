@@ -51,22 +51,22 @@ export default class Menu extends Component {
       {
         name: "Home",
         screen: "Home",
-        icon: require("../imgs/purchase.png")
+        icon: require("../imgs/home.png")
       },
       {
         name: "Open Contracts",
         screen: "Open",
-        icon: require("../imgs/purchase.png")
+        icon: require("../imgs/open.png")
       },
       {
         name: "Signed Contracts",
         screen: "Closed",
-        icon: require("../imgs/purchase.png")
+        icon: require("../imgs/close.png")
       },
       {
         name: "Logout",
         screen: "Logout",
-        icon: require("../imgs/purchase.png")
+        icon: require("../imgs/logout.png")
       }
     ];
     return (
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#113A5D',
+    backgroundColor: '#21e4e5',
   },
   wrapper: {
     marginTop: 40,
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 100,
     marginLeft: 50,
-    backgroundColor: '#fff'
+    backgroundColor: '#252cff'
   }
 });
