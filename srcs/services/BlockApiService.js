@@ -44,4 +44,4 @@ class BlockApiService {
 
 
 
-export default AuthApiService;
+export default BlockApiService;

@@ -4,27 +4,70 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { DrawerActions } from 'react-navigation';
+
+import BlockAPI from "../services/BlockApiService";
 
 export default class OpenContracts extends Component {
-  static navigationOptions = {
-   title: 'Open Contracts',
-  };
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Open Contracts',
+      headerLeft: null,
+      headerTintColor: "#fff",
+      headerStyle: {
+       backgroundColor: '#f4511e',
+      },
+      headerTitleStyle: {
+         fontWeight: 'bold',
+      },
+      headerRight: (<TouchableOpacity onPress={()=> navigation.dispatch(DrawerActions.toggleDrawer())}><Text>aa</Text></TouchableOpacity>),
+    }
+  }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      t: "a"
+      isLoading: true
+    }
+
+    this.blockApi = new BlockAPI();
+  }
+
+  async getContracts() {
+    try {
+      let token = await AsyncStorage.getItem("token");
+      let data = await this.blockApi.getMyContracts(token);
+
+      data = data.json()
+
+      this.setState({
+        data: data,
+        isLoading: false
+      });
+    } catch (e) {
+      alert(e);
     }
   }
 
+  componentDidMount() {
+    this.getContracts();
+  }
+
   render () {
+    if (this.state.isLoading) {
+      return (<View style={styles.container}>
+                <ActivityIndicator color="#2C3E50" size="large" style={styles.loader}/>
+            </View>);
+    }
+
     return (
       <View style={styles.container}>
-          <Text>{this.state.t}</Text>
+          <Text>ok</Text>
       </View>
     );
   }
@@ -36,6 +79,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  loader: {
+    marginTop: 250,
   },
   balanceButton: {
     backgroundColor: '#0dab7f',

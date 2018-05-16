@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  AsyncStorage
+  AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
@@ -105,7 +106,7 @@ export default class LoginScreen extends Component {
                          <Text style={styles.loginText}>Register</Text>
                        </TouchableOpacity>
          </View>
-         {this.state.isLoading && <Text>Loading !</Text>}
+         {this.state.isLoading && <ActivityIndicator color="#2C3E50" size="large" />}
       </View>
     );
   }

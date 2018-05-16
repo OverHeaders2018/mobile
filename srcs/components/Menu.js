@@ -5,7 +5,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 
@@ -25,7 +26,22 @@ export default class Menu extends Component {
 
   }
 
+  async logout() {
+    try {
+      await AsyncStorage.removeItem("token");
+
+      this.props.navigation.navigate("login");
+      this.props.navigation.dispatch(DrawerActions.toggleDrawer());
+    } catch (e) {
+      alert(e);
+    }
+  }
+
   navigate(screen) {
+    if (screen == "Logout") {
+      this.logout();
+      return;
+    }
     this.props.navigation.navigate(screen);
     this.props.navigation.dispatch(DrawerActions.toggleDrawer());
   }
