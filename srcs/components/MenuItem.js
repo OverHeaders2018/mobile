@@ -43,16 +43,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#cfd6ee',
+    backgroundColor: '#acb0b0',
     borderColor: "#090909",
-    borderLeftWidth: 1,
-    borderBottomWidth: 1,
-    borderRightWidth: 1,
     height: 70,
+    borderBottomWidth: 1
   },
   iconBox: {
     width: 50,
-    borderRightWidth: 1,
     borderRightColor: "#040202",
     justifyContent: 'space-around',
     alignItems: 'center'

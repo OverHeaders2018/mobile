@@ -56,7 +56,10 @@ export default class OpenContracts extends Component {
   }
 
   componentDidMount() {
-    this.getContracts();
+    //this.getContracts();
+    this.setState({
+      isLoading: false
+    })
   }
 
   render () {
@@ -66,9 +69,20 @@ export default class OpenContracts extends Component {
             </View>);
     }
 
+    const expire ='15.05.19 23:00';
+    const Cards = [
+        {text: 'Tomato',    type: 'red', sellers: ['Alon Aviv', 'Or Zipori'], buyers: ['jian young'], create_date:'1.1.18 15:00', expire :expire},
+        {text: 'Aubergine', type: 'purple', sellers: ['Alon Aviv', 'Or Zipori'], buyers: ['daniel hermon', 'Amos Maimon'], create_date:'15.05.09 23:00', expire :expire},
+        {text: 'Courgette', type: 'green', sellers: ['Alon Aviv', 'Or Zipori'], buyers: ['daniel hermon', 'Amos Maimon'], create_date:'15.05.13 23:00', expire :expire},
+        {text: 'Blueberry', type: 'blue', sellers: ['koko bozaglo', 'or Zipori'], buyers: ['daniel hermon', 'Amos Maimon'], create_date:'15.02.19 21:00', expire :expire},
+        {text: 'Umm...',    type: 'cyan', sellers: ['koko bozaglo', 'or Zipori'], buyers: ['daniel hermon', 'Amos Maimon'], create_date:'15.05.19 20:00', expire :expire},
+        {text: 'orange',    type: 'orange', sellers: ['koko bozaglo', 'or Zipori'], buyers: ['daniel hermon', 'Amos Maimon'], create_date:'15.05.19 23:01', expire :expire},
+    ];
+
     return (
+
       <View style={styles.container}>
-          <SwipeOpenContracts />
+          <SwipeOpenContracts data={Cards} />
       </View>
     );
   }
