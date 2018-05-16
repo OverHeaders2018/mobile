@@ -9,7 +9,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { DrawerActions } from 'react-navigation';
-
+import MenuOpen from '../components/MenuOpen';
 import BlockAPI from "../services/BlockApiService";
 
 export default class OpenContracts extends Component {
@@ -24,7 +24,7 @@ export default class OpenContracts extends Component {
       headerTitleStyle: {
          fontWeight: 'bold',
       },
-      headerRight: (<TouchableOpacity onPress={()=> navigation.dispatch(DrawerActions.toggleDrawer())}><Text>aa</Text></TouchableOpacity>),
+      headerRight: (<MenuOpen navigation={navigation}/>),
     }
   }
 

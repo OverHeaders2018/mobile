@@ -17,7 +17,7 @@ export default class HomeScreen extends Component {
       headerLeft: null,
       headerTintColor: "#fff",
       headerStyle: {
-       backgroundColor: '#252cf4',
+       backgroundColor: '#f4511e',
       },
       headerTitleStyle: {
          fontWeight: 'bold',
