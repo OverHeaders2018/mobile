@@ -26,6 +26,7 @@
     "react-native-level-fs": "^3.0.0",
     "react-native-os": "^1.1.0",
     "react-native-randombytes": "^2.2.0",
+    "react-native-swipe-cards": "^0.1.1",
     "react-native-tcp": "^2.0.4",
     "react-native-udp": "^1.2.9",
     "react-navigation": "^2.0.1",

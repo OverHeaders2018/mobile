@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import MenuOpen from '../components/MenuOpen';
+import SwipeOpenContracts from '../components/SwipeOpenContracts';
 import BlockAPI from "../services/BlockApiService";
 
 export default class OpenContracts extends Component {
@@ -43,7 +44,7 @@ export default class OpenContracts extends Component {
       let token = await AsyncStorage.getItem("token");
       let data = await this.blockApi.getMyContracts(token);
 
-      data = data.json()
+      data = data.json();
 
       this.setState({
         data: data,
@@ -67,7 +68,7 @@ export default class OpenContracts extends Component {
 
     return (
       <View style={styles.container}>
-          <Text>ok</Text>
+          <SwipeOpenContracts />
       </View>
     );
   }

@@ -53,6 +53,7 @@ export default class Menu extends Component {
         screen: "Home",
         icon: require("../imgs/home.png")
       },
+
       {
         name: "Open Contracts",
         screen: "Open",
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#21e4e5',
+    backgroundColor: '#effff3',
   },
   wrapper: {
     marginTop: 40,
@@ -106,6 +107,6 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 100,
     marginLeft: 50,
-    backgroundColor: '#252cff'
+    backgroundColor: '#837794'
   }
 });
